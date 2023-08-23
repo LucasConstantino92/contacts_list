@@ -79,7 +79,7 @@ class ContactHelper {
     return listContact;
   }
 
-  Future<int> getNumber() async {
+  Future<int?> getNumber() async {
     Database? dbContact = await db;
     return Sqflite.firstIntValue(
         await dbContact!.rawQuery("SELECT COUNT(*) FROM $contactTable"));
@@ -92,31 +92,35 @@ class ContactHelper {
 }
 
 class Contact {
-  late int id;
-  late String name;
-  late String email;
-  late String phone;
-  late String img;
+  int id;
+  String name;
+  String email;
+  String phone;
+  String img;
 
-  Contact.fromMap(Map map) {
-    id = map[idColumn];
-    name = map[nameColumn];
-    email = map[emailColumn];
-    phone = map[phoneColumn];
-    img = map[imageColumn];
-  }
+  Contact({
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.phone,
+    required this.img,
+  });
+
+  Contact.fromMap(Map map)
+      : id = map[idColumn],
+        name = map[nameColumn],
+        email = map[emailColumn],
+        phone = map[phoneColumn],
+        img = map[imageColumn];
 
   Map<String, dynamic> toMap() {
-    Map<String, dynamic> map = {
+    return {
+      idColumn: id,
       nameColumn: name,
       emailColumn: email,
       phoneColumn: phone,
-      imageColumn: img
+      imageColumn: img,
     };
-    if (id != null) {
-      map[idColumn] = id;
-    }
-    return map;
   }
 
   @override
