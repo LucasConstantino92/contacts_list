@@ -81,7 +81,8 @@ class ContactHelper {
 
   Future<int> getNumber() async {
     Database? dbContact = await db;
-    return Sqflite.firstIntValue(await dbContact!.rawQuery("SELECT COUNT(*) FROM $contactTable"));
+    return Sqflite.firstIntValue(
+        await dbContact!.rawQuery("SELECT COUNT(*) FROM $contactTable"));
   }
 
   close() async {
