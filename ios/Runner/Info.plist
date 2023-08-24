@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Contact List</string>
+	<string>Flutter Contact Book</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>contact_list</string>
+	<string>flutter_contact_book</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -43,9 +43,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Tirar fotos dos contatos.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Selecionar uma foto de contato da galeria.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Tirar fotos dos contatos.</string>
 </dict>
 </plist>
