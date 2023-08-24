@@ -36,12 +36,12 @@ class _HomePageState extends State<HomePage> {
           PopupMenuButton<OrderOptions>(
             itemBuilder: ((context) => <PopupMenuEntry<OrderOptions>>[
               const PopupMenuItem<OrderOptions>(
-                child: Text("Ordenar de A-Z"),
                 value: OrderOptions.orderaz,
+                child: Text("Ordenar de A-Z"),
               ),
               const PopupMenuItem<OrderOptions>(
-                child: Text("Ordenar de Z-A"),
                 value: OrderOptions.orderza,
+                child: Text("Ordenar de Z-A"),
               )
             ]),
             onSelected: _orderList,
@@ -53,8 +53,8 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           _showContactPage();
         },
-        child: const Icon(Icons.add),
         backgroundColor: Colors.red,
+        child: const Icon(Icons.add),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(10),
@@ -208,10 +208,10 @@ class _HomePageState extends State<HomePage> {
         await img.file.readAsBytes();
         return FileImage(File(path));
       } catch (e) {
-        return const AssetImage("images/person.jpg");
+        return const AssetImage("images/person.png");
       }
     } else {
-      return const AssetImage("images/person.jpg");
+      return const AssetImage("images/person.png");
     }
   }
 
