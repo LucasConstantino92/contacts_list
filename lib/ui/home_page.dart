@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import "package:flutter/material.dart";
+import 'package:url_launcher/url_launcher_string.dart';
 import 'contact_page.dart';
 import 'package:contact_list/helpers/contact_helper.dart';
 import "package:url_launcher/url_launcher.dart";
@@ -154,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       TextButton(
                         onPressed: () {
-                          launch("tel:${contacts[index].phone}");
+                          launchUrlString("tel:${contacts[index].phone}");
                           Navigator.pop(context);
                         },
                         child: const Text(
