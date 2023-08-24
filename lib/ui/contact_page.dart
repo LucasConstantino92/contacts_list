@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 class ContactPage extends StatefulWidget {
   final Contact? contact;
+
   const ContactPage({Key? key, this.contact}) : super(key: key);
 
   @override
@@ -12,15 +13,22 @@ class ContactPage extends StatefulWidget {
 }
 
 class _ContactPageState extends State<ContactPage> {
-  late Contact _editedContact;
+  Contact? _editedContact;
+  final _nameControler = TextEditingController();
+  final _emailControler = TextEditingController();
+  final _phoneControler = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    if (widget.contact != null) {
-      _editedContact = Contact.fromMap(widget.contact!.toMap());
+
+    if (widget.contact == null) {
+      _editedContact = Contact();
     } else {
-      _editedContact = Contact(id: 0, name: '', email: '', phone: '', img: '');
+      _editedContact = Contact.fromMap(widget.contact!.toMap());
+      _nameControler.text = _editedContact!.name!;
+      _emailControler.text = _editedContact!.email!;
+      _phoneControler.text = _editedContact!.phone!;
     }
   }
 
@@ -29,7 +37,8 @@ class _ContactPageState extends State<ContactPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: Text(_editedContact.name.isEmpty ? "Novo Contato" : _editedContact.name),
+        title: Text(_editedContact!.name ?? "Novo Contato"),
+        centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
@@ -46,9 +55,9 @@ class _ContactPageState extends State<ContactPage> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: _editedContact.img.isNotEmpty
-                      ? FileImage(File(_editedContact.img))
-                      : AssetImage("images/person.png"),
+                  image: _editedContact!.img != null
+                      ? FileImage(File(_editedContact!.img!))
+                      : const AssetImage("images/person.png") as ImageProvider,
                 ),
               ),
             ),
